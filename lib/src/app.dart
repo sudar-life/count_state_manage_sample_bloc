@@ -45,8 +45,11 @@ class App extends StatelessWidget {
                 child: Text('Cubit 더하기')),
             ElevatedButton(
                 onPressed: () {
-                  Get.to(BlocProvider(
-                      create: (context) => CountBloc(), child: BlocHome()));
+                  Get.to(
+                    BlocProvider(
+                        create: (context) => CountBloc(), child: BlocHome()),
+                    duration: Duration.zero,
+                  );
                 },
                 child: Text('Bloc 더하기')),
           ],

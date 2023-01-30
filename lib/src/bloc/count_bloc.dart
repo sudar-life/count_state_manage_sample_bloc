@@ -2,10 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:rxdart/rxdart.dart';
 
-EventTransformer<T> debounceTime<T>(Duration duration) {
-  return (events, mapper) => events.debounceTime(duration).flatMap(mapper);
-}
-
 class CountBloc extends Bloc<CountEvent, int> {
   CountBloc() : super(0) {
     on<AddCountEvent>((event, emit) {
@@ -15,9 +11,6 @@ class CountBloc extends Bloc<CountEvent, int> {
       (event, emit) {
         emit(state - 1);
       },
-      transformer: debounceTime(
-        const Duration(milliseconds: 1000),
-      ),
     );
   }
 }
